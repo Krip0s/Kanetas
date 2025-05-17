@@ -142,8 +142,6 @@
             transform: scale(1.0);
         }
 
-
-
         .btn {
             background-color: #ff7043;
             color: white;
@@ -307,8 +305,6 @@
                 gap: 30px;
             }
 
-
-
             .sobre-container {
                 flex-direction: column;
             }
@@ -350,6 +346,7 @@
             });
         });
     </script>
+</head>
 
 <body>
     <header>
@@ -367,44 +364,39 @@
         </div>
     </header>
 
-<div class="slider">
+    <!-- Início do Slider Corrigido -->
+    <div class="slider">
+        <div class="slides">        
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
 
-<div class="slides">        
-<input type="radio" name="radio-btn" id="radio1">
-<input type="radio" name="radio-btn" id="radio2">
-<input type="radio" name="radio-btn" id="radio3">
+            <div class="slide first">
+                <img src="imgs/1.png" alt="Imagem 1">
+            </div>
 
-<div class="slide first">
-<img src="imgs/1.png" alt="Imagem 1">
-</div>
+            <div class="slide">
+                <img src="imgs/2.png" alt="Imagem 2">
+            </div>
 
-<div class="slide first">
-<img src="imgs/2.png" alt="Imagem 2">
-</div>
+            <div class="slide">
+                <img src="imgs/3.png" alt="Imagem 3">
+            </div>
 
-<div class="slide first">
-<img src="imgs/3.png" alt="Imagem 3">
-</div>
+            <div class="nav-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+            </div>
+        </div>
 
-<div class="nav-auto">
-
-<div class="auto-btn1"></div>
-<div class="auto-btn2"></div>
-<div class="auto-btn3"></div>
-
-</div>
-
-</div>
-
-<div class="nav-manual">
-<label for="radio1" class="manual-btn"></label>
-<label for="radio2" class="manual-btn"></label>
-<label for="radio3" class="manual-btn"></label>
-
-
-</div>
-
-</div>
+        <div class="nav-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+        </div>
+    </div>
+    <!-- Fim do Slider Corrigido -->
 
     <div class="modal" id="sobreModal">
         <div class="modal-content">
@@ -426,21 +418,6 @@
             <p>Endereço: Rua das Flores, 123 - São Paulo, SP</p>
         </div>
     </div>
-
-
-</body>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>model</title>
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-
-
 
     <section class="produtos container">
         <h2>Produtos em Destaque</h2>
@@ -488,7 +465,7 @@
             <div class="sobre-img"></div>
             <div class="sobre-texto">
                 <h2>Sobre Nossa Papelaria</h2>
-                <p>A Kanetas D+ está no mercado há mais de x anos, oferecendo produtos de qualidade para estudantes,
+                <p>A Kanetas D+ está no mercado há mais de 10 anos, oferecendo produtos de qualidade para estudantes,
                     profissionais e entusiastas de artesanato.</p>
                 <p>Nosso compromisso é proporcionar a melhor experiência de compra, com atendimento personalizado e
                     preços justos.</p>
@@ -504,11 +481,7 @@
                 <p>Sua loja completa de materiais escolares e de escritório e artesanato.</p>
             </div>
 
-
-
             <div class="footer-secao">
-
-
                 <h3>Links Rápidos</h3>
                 <ul>
                     <li><a href="#">Início</a></li>
@@ -516,15 +489,12 @@
                     <li><a href="#">Promoções</a></li>
                     <li><a href="#" onclick="toggleModal('sobreModal'); return false;">Sobre Nós</a></li>
                     <li><a href="#" onclick="toggleModal('contatoModal'); return false;">Contato</a></li>
-
                 </ul>
-
             </div>
 
             <div class="footer-secao">
                 <h3>Horário de Funcionamento</h3>
                 <ul>
-
                     <li>Segunda a Sexta: 9h às 18h</li>
                     <li>Sábados: 9h às 13h</li>
                     <li>Domingos e Feriados: Fechado</li>
