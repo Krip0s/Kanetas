@@ -79,6 +79,43 @@
             transition: opacity 0.3s;
         }
 
+         .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: block;
+        }
+        
+        .menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: #5c6bc0;
+            flex-direction: column;
+            padding: 20px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .menu.active {
+            display: flex;
+        }
+        
+        .menu li {
+            margin: 10px 0;
+        }
+        
+        header {
+            padding: 15px 0;
+        }
+    }
+
+
         .btn-produtos {
             padding: 0px 0px !important;
             color: #5c6bc0;
@@ -349,19 +386,22 @@
 
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Kanetas D+</div>
-                <ul class="menu">
-                    <li><a href="#">Início</a></li>
-                    <li><a href="index1.html" class="btn-produtos">Ver Produtos</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><button onclick="toggleModal('sobreModal')">Sobre Nós</button></li>
-                    <li><button onclick="toggleModal('contatoModal')">Contato</button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+     <div class="container">
+        <nav>
+            <div class="logo">Kanetas D+</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="menu" id="mainMenu">
+                <li><a href="#">Início</a></li>
+                <li><a href="index1.html" class="btn-produtos">Ver Produtos</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><button onclick="toggleModal('sobreModal')">Sobre Nós</button></li>
+                <li><button onclick="toggleModal('contatoModal')">Contato</button></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
     <section class="slider">
 
@@ -393,7 +433,7 @@
                 <div class="autobtn3"></div>
             </div>
 
-            <div class="navegation-manual">
+            <div class="nav-manual">
                 <label for="radio1" class="manual-btn"></label>
                 <label for="radio2" class="manual-btn"></label>
                 <label for="radio3" class="manual-btn"></label>
@@ -509,6 +549,14 @@
             <p>&copy; 2025 Kanetas D+. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('mainMenu');
+        menu.classList.toggle('active');
+    }
+</script>
+
 </body>
 
 </html>

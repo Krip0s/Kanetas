@@ -22,10 +22,9 @@ body {
 .modal-content {
 	opacity: 1;
 	padding: 15px 24px;
-	width: 500;
+	width: 90%;
 	border-radius: 0.5rem;
-
-
+	max-width: 500px;
 }
 
 span {

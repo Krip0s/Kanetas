@@ -22,6 +22,19 @@ display: flex;
 flex-direction: column;  
 }
 
+@media (max-width: 400px) {
+  .produtos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .busca input {
+    width: 100%;
+  }
+}
+
+
 .produto-nome{
 font-weight: bold;
 margin-bottom: 5px;
