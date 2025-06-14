@@ -5,11 +5,26 @@ body {
     color: #333;
 }
 
-.funnel-display {
+
+.lexend {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+h1, h2, h3, .logo {
     font-family: "Funnel Display", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 600;
     font-style: normal;
+}
+
+.nav-link {
+	display: flex;
+	align-items: center;
+	gap: 5px;
 }
 
 .produto{
@@ -84,7 +99,7 @@ margin-bottom: 5px;
 	max-width: 500px;
 }
 
-span {
+.span {
 
 	float: inline-start;
 	width: 24px;
@@ -95,7 +110,7 @@ span {
 
 }
 
-span:hover {
+.Span:hover {
 
 	background-color: rgb(108, 108, 255);
 
@@ -124,8 +139,5 @@ span:hover {
 
 }
 
-.show-modal {
-	opacity: 1;
-	visibility: visible;
-	transform: scale(1.0);
-}
+
+

@@ -21,6 +21,13 @@ h1, h2, h3, .logo {
     font-weight: 600;
     font-style: normal;
 }
+
+.nav-link {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
 .modal {
 	position: fixed;
 	padding: 0;

@@ -1,0 +1,21 @@
+body {
+  font-family: "Lexend", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.funnel-display {
+  font-family: "Funnel Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  background: #111;
+  color: white;
+  font-size: 24px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}/*# sourceMappingURL=index2.css.map */
