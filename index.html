@@ -3,19 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="https://kit.fontawesome.com/6dda5f6271.js" crossorigin="anonymous"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="slide.css">
     <script src="slide.js" defer></script>
+  
     <title>Kanetas D+</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+
         }
 
         body {
@@ -79,41 +84,41 @@
             transition: opacity 0.3s;
         }
 
-         .menu-toggle {
-        display: none;
-        cursor: pointer;
-        font-size: 24px;
-    }
-
-    @media (max-width: 768px) {
         .menu-toggle {
-            display: block;
-        }
-        
-        .menu {
-            position: fixed;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            background-color: #5c6bc0;
-            flex-direction: column;
-            padding: 20px;
             display: none;
-            z-index: 1000;
+            cursor: pointer;
+            font-size: 24px;
         }
-        
-        .menu.active {
-            display: flex;
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: #5c6bc0;
+                flex-direction: column;
+                padding: 20px;
+                display: none;
+                z-index: 1000;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu li {
+                margin: 10px 0;
+            }
+
+            header {
+                padding: 15px 0;
+            }
         }
-        
-        .menu li {
-            margin: 10px 0;
-        }
-        
-        header {
-            padding: 15px 0;
-        }
-    }
 
 
         .btn-produtos {
@@ -386,22 +391,22 @@
 
 <body>
     <header>
-     <div class="container">
-        <nav>
-            <div class="logo">Kanetas D+</div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="menu" id="mainMenu">
-                <li><a href="#">Início</a></li>
-                <li><a href="index1.html" class="btn-produtos">Ver Produtos</a></li>
-                <li><a href="#">Ofertas</a></li>
-                <li><button onclick="toggleModal('sobreModal')">Sobre Nós</button></li>
-                <li><button onclick="toggleModal('contatoModal')">Contato</button></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+        <div class="container">
+            <nav>
+                <div class="logo">Kanetas D+</div>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu" id="mainMenu">
+                    <li><a href="#">Início</a></li>
+                    <li><a href="index1.html" class="btn-produtos">Ver Produtos</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><button onclick="toggleModal('sobreModal')">Sobre Nós</button></li>
+                    <li><button onclick="toggleModal('contatoModal')">Contato</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <section class="slider">
 
@@ -550,12 +555,12 @@
         </div>
     </footer>
 
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById('mainMenu');
-        menu.classList.toggle('active');
-    }
-</script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mainMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
 
 </body>
 

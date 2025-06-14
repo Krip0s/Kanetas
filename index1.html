@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<link   
+
 
 <head>
 
@@ -102,6 +102,59 @@
             font-size: 28px;
         }
     }
+
+.modal {
+            position: fixed;
+            padding: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(129, 129, 129, 0.7);
+            transform: scale(1.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: visibility 0.25s ease-in-out, transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            padding: 15px 24px;
+            width: 500px;
+            border-radius: 0.5rem;
+            background-color: white;
+            color: #333;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            background-color: rgb(142, 44, 255);
+            text-align: center;
+            line-height: 24px;
+            color: white;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            background-color: rgb(108, 108, 255);
+        }
+
+        .show-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1.0);
+        }
+
+
         
         .produtos-banner {
             height: 200px;
@@ -367,25 +420,79 @@
             }
         }
     </style>
+
+<script>
+        // Função para manipular os modais
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.toggle('show-modal');
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fechar modal quando clicar no X
+            const closeButtons = document.querySelectorAll('.close-modal');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const modal = this.closest('.modal');
+                    modal.classList.remove('show-modal');
+                });
+            });
+
+            // Fechar modal quando clicar fora do conteúdo
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        this.classList.remove('show-modal');
+                    }
+                });
+            });
+        });
+    </script>
+
 </head>
 <body>
- <header>
-    <div class="container">
-        <nav>
-            <div class="logo">Kanetas D+</div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="menu" id="mainMenu">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="index1.html" style="padding: 0; color: white;">Ver Produtos</a></li>
-                <li><a href="#">Ofertas</a></li>
-                <li><a href="#">Sobre Nós</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </nav>
+  <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Kanetas D+</div>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu" id="mainMenu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index1.html" class="btn-produtos">Ver Produtos</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><button onclick="toggleModal('sobreModal')">Sobre Nós</button></li>
+                    <li><button onclick="toggleModal('contatoModal')">Contato</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+     <div class="modal" id="sobreModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('sobreModal')">&times;</span>
+            <h1>Sobre Nós</h1>
+            <p>A Kanetas D+ está no mercado há mais de 10 anos, oferecendo produtos de qualidade para estudantes,
+                profissionais e entusiastas de artesanato.</p>
+            <p>Nosso compromisso é proporcionar a melhor experiência de compra, com atendimento personalizado e preços
+                justos.</p>
+        </div>
     </div>
-</header>
+
+    <div class="modal" id="contatoModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('contatoModal')">&times;</span>
+            <h1>Entre em Contato</h1>
+            <p>Email: Kanetas.D+@gmail.com.br</p>
+            <p>Telefone: (11) 5555-5555</p>
+            <p>Endereço: Rua das Flores, 123 - São Paulo, SP</p>
+        </div>
+    </div>
     
     <section class="produtos-banner">
         <div class="banner-content">
@@ -631,12 +738,14 @@
             <div class="footer-secao">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="index1.html" class="btn-produtos">Ver Produtos</a></li>
                     <li><a href="#">Promoções</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#" onclick="toggleModal('sobreModal'); return false;">Sobre Nós</a></li>
+                    <li><a href="#" onclick="toggleModal('contatoModal'); return false;">Contato</a></li>
                 </ul>
             </div>
+            
             
             <div class="footer-secao">
                 <h3>Contato</h3>
