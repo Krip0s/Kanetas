@@ -2,120 +2,119 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrinho de Compras</title>
-  <link rel="stylesheet" href="index2.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="index2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Lexend:wght@100..900&display=swap"
-        rel="stylesheet">  
+        rel="stylesheet">
 </head>
 
 <style>
-        @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Lexend:wght@100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Lexend:wght@100..900&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
 
-        }
+    }
 
-        body {
-            background-color: #f9f9f9;
-            color: #333;
+    body {
+        background-color: #f9f9f9;
+        color: #333;
 
-        }
+    }
 
-        header {
-            background-color: #5c6bc0;
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+    header {
+        background-color: #5c6bc0;
+        color: white;
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .menu {
+        display: flex;
+        list-style: none;
+    }
+
+    .menu li {
+        margin-left: 20px;
+    }
+
+    .menu a {
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+    }
+
+    .menu a:hover {
+        opacity: 0.8;
+    }
+
+    .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: block;
         }
 
         .menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: #5c6bc0;
+            flex-direction: column;
+            padding: 20px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .menu.active {
             display: flex;
-            list-style: none;
         }
 
         .menu li {
-            margin-left: 20px;
+            margin: 10px 0;
         }
 
-        .menu a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
+        header {
+            padding: 15px 0;
         }
 
-        .menu a:hover {
-            opacity: 0.8;
-        }
 
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .menu {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: #5c6bc0;
-                flex-direction: column;
-                padding: 20px;
-                display: none;
-                z-index: 1000;
-            }
-
-            .menu.active {
-                display: flex;
-            }
-
-            .menu li {
-                margin: 10px 0;
-            }
-
-            header {
-                padding: 15px 0;
-            }
-
-           
-        }
-
-        
-        </style>
+    }
+</style>
 
 <body>
- <header>
+    <header>
         <div class="container">
             <nav>
                 <div class="logo">Carrinho de Compras</div>
@@ -128,7 +127,41 @@
             </nav>
         </div>
     </header>
-  <main>conteudo</main>
+    <main>
+        <div class="page-title">Seu Carrinho</div>
+        <div class="content">
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><span>Produto</span></th>
+                            <th><span>Preço</span></th>
+                            <th><span>Quantidade</span></th>
+                            <th><span>Total</span></th>
+                            <th><span>-</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <td></td>
+                        <td>120R$</td>
+                        <td>
+                            <div class="qty">
+                                <button>-</button>
+                                <span>2</span>
+                                <button>+</button>
+                            </div>
+                        </td>
+                        <td>240R$</td>
+                        <td>
+                            <button><i class='bx bx-x'></i></button>
+                        </td>
+                    </tbody>
+                </table>
+            </section>
+            <aside>resumo das Compras</aside>
+        </div>
+        </div>
+    </main>
 </body>
 
 </html>

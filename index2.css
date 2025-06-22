@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Lexend", sans-serif;
   background-color: #f9f9f9;
@@ -12,10 +17,49 @@ body {
 }
 
 header {
-  background: #111;
+  background: #5c6bc0;
   color: white;
   font-size: 24px;
   padding: 20px;
   display: flex;
   justify-content: center;
+}
+
+main {
+  background: white;
+  padding: 0 30px;
+}
+main .page-title {
+  font-size: 40px;
+  padding: 50px 0;
+  text-align: center;
+}
+main .content {
+  display: flex;
+}
+main .content section {
+  flex: 1;
+}
+main .content aside {
+  background: red;
+  min-width: 250px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead tr {
+  border-bottom: 3px solid #eee;
+}
+table thead tr th {
+  text-align: left;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  color: #5c6bc0;
+}
+table thead tr th span {
+  background-color: #ffccbc;
+  padding: 4px 8px;
+  border-radius: 4px;
 }/*# sourceMappingURL=index2.css.map */
