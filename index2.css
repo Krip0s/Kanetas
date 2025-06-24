@@ -30,7 +30,7 @@ main {
   padding: 0 30px;
 }
 main .page-title {
-  font-size: 40px;
+  font-size: 35px;
   padding: 50px 0;
   text-align: center;
 }
@@ -57,9 +57,35 @@ table thead tr th {
   padding-bottom: 10px;
   text-transform: uppercase;
   color: #5c6bc0;
+  font-size: 17px;
 }
 table thead tr th span {
   background-color: #ffccbc;
   padding: 4px 8px;
   border-radius: 4px;
+}
+table tbody tr {
+  border-bottom: 3px solid #eee;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table tbody tr td {
+  padding: 30px 0;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.product img {
+  border-radius: 6px;
+}
+.product .info .name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.product .info .color {
+  color: #666;
 }/*# sourceMappingURL=index2.css.map */

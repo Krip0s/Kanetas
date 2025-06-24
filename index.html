@@ -229,13 +229,7 @@
             transform: translateY(-5px);
         }
 
-        .produto-img {
-            height: 200px;
-            background-color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        
 
         .produto-info {
             padding: 15px;
@@ -263,12 +257,7 @@
             align-items: center;
         }
 
-        .sobre-img {
-            flex: 1;
-            height: 300px;
-            background-color: #c5cae9;
-            border-radius: 8px;
-        }
+        
 
         .sobre-texto {
             flex: 1;
@@ -403,7 +392,7 @@
                     <li><a href="index1.html" class="btn-produtos">Ver Produtos</a></li>
                     <li><button onclick="toggleModal('sobreModal')">Sobre Nós</button></li>
                     <li><button onclick="toggleModal('contatoModal')">Contato</button></li>
-                <li><a href="index2.html" class="nav-link"> Carrinho <img src="imgs/cart-line-icon.png" height="20" width="20" alt="Carrinho"></a></li>
+                <li><a href="index2.html" class="carrinho">  <img src="imgs/cart-line-icon.png" height="20" width="20" alt="carrinho"></a></li>
                 </ul>
             </nav>
         </div>
@@ -472,7 +461,7 @@
         <h2>Produtos em Destaque</h2>
         <div class="produtos-grid">
             <div class="produto">
-                <div class="produto-img">Imagem do Produto</div>
+                <div class="produto-img"><img src="https://picsum.photos/200/200" alt=""></div>
                 <div class="produto-info">
                     <div class="produto-nome">Caderno Universitário</div>
                     <div class="produto-preco">R$ 24,90</div>
@@ -481,7 +470,7 @@
             </div>
 
             <div class="produto">
-                <div class="produto-img">Imagem do Produto</div>
+                <div class="produto-img"><img src="https://picsum.photos/200/200" alt=""></div>
                 <div class="produto-info">
                     <div class="produto-nome">Conjunto de Canetas</div>
                     <div class="produto-preco">R$ 15,50</div>
@@ -490,7 +479,7 @@
             </div>
 
             <div class="produto">
-                <div class="produto-img">Imagem do Produto</div>
+                <div class="produto-img"><img src="https://picsum.photos/200/200" alt=""></div>
                 <div class="produto-info">
                     <div class="produto-nome">Kit de Papelaria</div>
                     <div class="produto-preco">R$ 39,90</div>
@@ -499,7 +488,7 @@
             </div>
 
             <div class="produto">
-                <div class="produto-img">Imagem do Produto</div>
+                <div class="produto-img"><img src="https://picsum.photos/200/200" alt=""></div>
                 <div class="produto-info">
                     <div class="produto-nome">Agenda 2025</div>
                     <div class="produto-preco">R$ 32,00</div>
@@ -511,14 +500,13 @@
 
     <section class="sobre">
         <div class="container sobre-container">
-            <div class="sobre-img"></div>
+            <div class="sobre-img"> <img src="imgs/imagem faixada.png" alt=""></div>
             <div class="sobre-texto">
                 <h2>Sobre Nossa Papelaria</h2>
                 <p>A Kanetas D+ está no mercado há mais de 10 anos, oferecendo produtos de qualidade para estudantes,
                     profissionais e entusiastas de artesanato.</p>
                 <p>Nosso compromisso é proporcionar a melhor experiência de compra, com atendimento personalizado e
                     preços justos.</p>
-                <a href="#" class="btn">Saiba Mais</a>
             </div>
         </div>
     </section>
