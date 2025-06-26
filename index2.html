@@ -122,8 +122,7 @@
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul class="menu" id="mainMenu">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="index1.html" class="btn-produtos">Voltar aos Produtos</a></li>
+                    <li><a href="index.html"><i class='bx bx-chevron-left' ></i>Voltar</a></li>
             </nav>
         </div>
     </header>
@@ -142,6 +141,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
+
                         <tr>
                             <td>
                                 <div class="product">
@@ -155,45 +156,33 @@
                             <td>120R$</td>
                             <td>
                                 <div class="qty">
-                                    <button>-</button>
+                                    <button><i class="bx bx-minus"></i></button>
                                     <span>2</span>
-                                    <button>+</button>
+                                    <button><i class="bx bx-plus"></i></button>
                                 </div>
                             </td>
                             <td>240R$</td>
                             <td>
-                                <button><i class='bx bx-x'></i></button>
-                            </td>
-                        </tr>
-
-<tr>
-                            <td>
-                                <div class="product">
-                                    <img src="https://picsum.photos/id/1/100/120" alt="">
-                                    <div class="info">
-                                        <div class="name">nome do produto</div>
-                                        <div class="color">categoria</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>120R$</td>
-                            <td>
-                                <div class="qty">
-                                    <button>-</button>
-                                    <span>2</span>
-                                    <button>+</button>
-                                </div>
-                            </td>
-                            <td>240R$</td>
-                            <td>
-                                <button><i class='bx bx-x'></i></button>
+                                <button class="remove"><i class='bx bx-x'></i></button>
                             </td>
                         </tr>
 
                     </tbody>
                 </table>
             </section>
-            <aside>resumo das Compras</aside>
+            <aside>
+                <div class="box">
+                    <header></header>
+                    <div class="info">
+                        <div><span>sub-total</span><span>418R$</span></div>
+                        <div><span>frete</span><span>gratuito</span></div>
+                        <div><button>adicionar cupom de desconto</button></div>
+                    </div>
+                    <footer></footer>
+                </div>
+
+                <button>Finalizar Compra</button>
+            </aside>
         </div>
         </div>
     </main>

@@ -1,0 +1,18 @@
+configurarEventos() {
+                // Máscara para CEP
+                const cepInput = document.getElementById('cep-input');
+                cepInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 5) {
+                        value = value.substring(0, 5) + '-' + value.substring(5, 8);
+                    }
+                    e.target.value = value;
+                });
+
+                // Enter no campo CEP
+                cepInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.calcularFrete();
+                    }
+                });
+            }

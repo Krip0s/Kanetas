@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Lexend:wght@100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Lexend", sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #5c6bc0;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: "Funnel Display", sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .menu a:hover {
+            opacity: 0.8;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .page-title {
+            text-align: center;
+            font-family: "Funnel Display", sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #5c6bc0;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cart-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-table thead {
+            background-color: #5c6bc0;
+            color: white;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .cart-table th {
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-cell {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 250px;
+        }
+
+        .product-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .product-info h4 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .product-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .price-cell {
+            font-weight: 600;
+            color: #ff7043;
+            font-size: 16px;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .qty-btn:hover {
+            background-color: #5c6bc0;
+            color: white;
+            border-color: #5c6bc0;
+        }
+
+        .qty-display {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #f9f9f9;
+        }
+
+        .remove-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #ff5252;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .remove-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .summary-box,
+        .shipping-box {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-box h3,
+        .shipping-box h3 {
+            font-family: "Funnel Display", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #5c6bc0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .summary-row.total {
+            font-weight: 600;
+            font-size: 18px;
+            color: #5c6bc0;
+            border-top: 2px solid #e0e0e0;
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+
+        .cep-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .cep-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .cep-input input:focus {
+            outline: none;
+            border-color: #5c6bc0;
+        }
+
+        .cep-btn {
+            padding: 12px 20px;
+            background: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cep-btn:hover {
+            background-color: #4a5ab0;
+        }
+
+        .shipping-options {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .shipping-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .shipping-option:hover {
+            border-color: #5c6bc0;
+        }
+
+        .shipping-option.selected {
+            border-color: #5c6bc0;
+            background-color: #f3f4f6;
+        }
+
+        .shipping-option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #5c6bc0, #7986cb);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #4a5ab0, #6573c3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(92, 107, 192, 0.3);
+        }
+
+        .checkout-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-cart i {
+            font-size: 64px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .empty-cart h3 {
+            font-family: "Funnel Display", sans-serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cart-table {
+                font-size: 14px;
+            }
+
+            .cart-table th,
+            .cart-table td {
+                padding: 10px 8px;
+            }
+
+            .product-cell {
+                min-width: auto;
+                gap: 10px;
+            }
+
+            .product-img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .qty-controls {
+                gap: 5px;
+            }
+
+            .qty-btn {
+                width: 28px;
+                height: 28px;
+            }
+
+            .qty-display {
+                min-width: 30px;
+                padding: 4px;
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #5c6bc0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Carrinho de Compras</div>
+                <ul class="menu">
+                    <li><a href="#" onclick="window.history.back()">← Voltar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <body>
+        
+    </body>
+
+    <main>
+        <div class="container">
+            <div class="page-title">Seu Carrinho</div>
+            
+            <div class="content">
+                <section class="cart-section">
+                    <div id="cart-items">
+                        <!-- Items do carrinho serão inseridos aqui -->
+                    </div>
+                </section>
+
+                <aside class="sidebar">
+                    <div class="shipping-box">
+                        <h3>Calcular Frete</h3>
+                        <div class="cep-input">
+                            <input type="text" id="cep-input" placeholder="Digite seu CEP" maxlength="9">
+                            <button class="cep-btn" onclick="calcularFrete()">Calcular</button>
+                        </div>
+                        <div id="shipping-options" class="shipping-options">
+                            <!-- Opções de frete serão inseridas aqui -->
+                        </div>
+                    </div>
+
+                    <div class="summary-box">
+                        <h3>Resumo do Pedido</h3>
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Frete:</span>
+                            <span id="shipping-cost">R$ 0,00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="total">R$ 0,00</span>
+                        </div>
+                        <button class="checkout-btn" onclick="finalizarCompra()">
+                            Finalizar Compra
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Classe para gerenciar o carrinho
+        class CarrinhoCompras {
+            constructor() {
+                this.items = this.carregarCarrinho();
+                this.frete = 0;
+                this.tipoFreteEscolhido = null;
+                this.init();
+            }
+
+            init() {
+                this.renderizarCarrinho();
+                this.atualizarResumo();
+                this.configurarEventos();
+            }
+
+            configurarEventos() {
+                // Máscara para CEP
+                const cepInput = document.getElementById('cep-input');
+                cepInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 5) {
+                        value = value.substring(0, 5) + '-' + value.substring(5, 8);
+                    }
+                    e.target.value = value;
+                });
+
+                // Enter no campo CEP
+                cepInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.calcularFrete();
+                    }
+                });
+            }
+
+            carregarCarrinho() {
+                // Dados de exemplo - em um site real, isso viria do localStorage ou API
+                return [
+                    {
+                        id: 1,
+                        nome: 'Smartphone Samsung Galaxy',
+                        categoria: 'Eletrônicos',
+                        preco: 899.99,
+                        quantidade: 1,
+                        imagem: 'https://picsum.photos/id/1/100/100'
+                    },
+                    {
+                        id: 2,
+                        nome: 'Notebook Dell Inspiron',
+                        categoria: 'Informática',
+                        preco: 2499.99,
+                        quantidade: 1,
+                        imagem: 'https://picsum.photos/id/2/100/100'
+                    },
+                    {
+                        id: 3,
+                        nome: 'Fone de Ouvido Bluetooth',
+                        categoria: 'Áudio',
+                        preco: 199.99,
+                        quantidade: 2,
+                        imagem: 'https://picsum.photos/id/3/100/100'
+                    }
+                ];
+            }
+
+            renderizarCarrinho() {
+                const container = document.getElementById('cart-items');
+                
+                if (this.items.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-cart">
+                            <i class='bx bx-cart'></i>
+                            <h3>Seu carrinho está vazio</h3>
+                            <p>Adicione produtos para começar suas compras</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = `
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                                <th>Total</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${this.items.map(item => `
+                                <tr data-id="${item.id}">
+                                    <td>
+                                        <div class="product-cell">
+                                            <img src="${item.imagem}" alt="${item.nome}" class="product-img">
+                                            <div class="product-info">
+                                                <h4>${item.nome}</h4>
+                                                <p>${item.categoria}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="price-cell">R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
+                                    <td>
+                                        <div class="qty-controls">
+                                            <button class="qty-btn" onclick="carrinho.alterarQuantidade(${item.id}, -1)">
+                                                <i class='bx bx-minus'></i>
+                                            </button>
+                                            <span class="qty-display">${item.quantidade}</span>
+                                            <button class="qty-btn" onclick="carrinho.alterarQuantidade(${item.id}, 1)">
+                                                <i class='bx bx-plus'></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="price-cell">R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</td>
+                                    <td>
+                                        <button class="remove-btn" onclick="carrinho.removerItem(${item.id})" title="Remover item">
+                                            <i class='bx bx-x'></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            alterarQuantidade(id, delta) {
+                const item = this.items.find(item => item.id === id);
+                if (item) {
+                    item.quantidade += delta;
+                    if (item.quantidade <= 0) {
+                        this.removerItem(id);
+                    } else {
+                        this.renderizarCarrinho();
+                        this.atualizarResumo();
+                        this.salvarCarrinho();
+                    }
+                }
+            }
+
+            removerItem(id) {
+                this.items = this.items.filter(item => item.id !== id);
+                this.renderizarCarrinho();
+                this.atualizarResumo();
+                this.salvarCarrinho();
+            }
+
+            calcularSubtotal() {
+                return this.items.reduce((total, item) => total + (item.preco * item.quantidade), 0);
+            }
+
+            atualizarResumo() {
+                const subtotal = this.calcularSubtotal();
+                const total = subtotal + this.frete;
+
+                document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+                document.getElementById('shipping-cost').textContent = `R$ ${this.frete.toFixed(2).replace('.', ',')}`;
+                document.getElementById('total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            }
+
+            async calcularFrete() {
+                const cep = document.getElementById('cep-input').value.replace(/\D/g, '');
+                
+                if (cep.length !== 8) {
+                    alert('Por favor, digite um CEP válido com 8 dígitos.');
+                    return;
+                }
+
+                const btn = document.querySelector('.cep-btn');
+                const originalText = btn.textContent;
+                btn.innerHTML = '<div class="loading"></div>';
+                btn.disabled = true;
+
+                try {
+                    // Simular chamada para API de frete
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    // Simular diferentes opções de frete
+                    const opcoesFrete = [
+                        { tipo: 'PAC', prazo: '8-12 dias úteis', valor: 15.50 },
+                        { tipo: 'SEDEX', prazo: '3-5 dias úteis', valor: 25.90 },
+                        { tipo: 'SEDEX 10', prazo: '1-2 dias úteis', valor: 45.00 }
+                    ];
+
+                    this.mostrarOpcoesFretes(opcoesFrete);
+                    
+                } catch (error) {
+                    alert('Erro ao calcular frete. Tente novamente.');
+                } finally {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }
+            }
+
+            mostrarOpcoesFretes(opcoes) {
+                const container = document.getElementById('shipping-options');
+                
+                container.innerHTML = opcoes.map((opcao, index) => `
+                    <div class="shipping-option" onclick="carrinho.selecionarFrete(${opcao.valor}, '${opcao.tipo}', this)">
+                        <div>
+                            <input type="radio" name="frete" value="${opcao.tipo}" ${index === 0 ? 'checked' : ''}>
+                            <strong>${opcao.tipo}</strong> - ${opcao.prazo}
+                        </div>
+                        <div class="price-cell">R$ ${opcao.valor.toFixed(2).replace('.', ',')}</div>
+                    </div>
+                `).join('');
+                
+                container.style.display = 'flex';
+                
+                // Selecionar a primeira opção por padrão
+                this.selecionarFrete(opcoes[0].valor, opcoes[0].tipo, container.firstElementChild);
+            }
+
+            selecionarFrete(valor, tipo, elemento) {
+                // Remove seleção anterior
+                document.querySelectorAll('.shipping-option').forEach(el => el.classList.remove('selected'));
+                
+                // Adiciona seleção atual
+                elemento.classList.add('selected');
+                elemento.querySelector('input[type="radio"]').checked = true;
+                
+                this.frete = valor;
+                this.tipoFreteEscolhido = tipo;
+                this.atualizarResumo();
+            }
+
+            salvarCarrinho() {
+                // Em um site real, salvaria no localStorage ou enviaria para o servidor
+                try {
+                    localStorage.setItem('carrinho', JSON.stringify(this.items));
+                } catch (e) {
+                    console.log('Carrinho salvo em memória (localStorage não disponível)');
+                }
+            }
+
+            finalizarCompra() {
+                if (this.items.length === 0) {
+                    alert('Seu carrinho está vazio!');
+                    return;
+                }
+
+                const subtotal = this.calcularSubtotal();
+                const total = subtotal + this.frete;
+                
+                const resumo = {
+                    items: this.items,
+                    subtotal: subtotal,
+                    frete: this.frete,
+                    tipoFrete: this.tipoFreteEscolhido,
+                    total: total,
+                    timestamp: new Date().toISOString()
+                };
+
+                // Em um site real, enviaria para o servidor
+                console.log('Dados da compra:', resumo);
+                
+                alert(`Compra finalizada com sucesso!\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}\n\nObrigado pela preferência!`);
+                
+                // Limpar carrinho após finalizar
+                this.items = [];
+                this.renderizarCarrinho();
+                this.atualizarResumo();
+                this.salvarCarrinho();
+            }
+        }
+
+        // Funções globais para compatibilidade
+        function calcularFrete() {
+            carrinho.calcularFrete();
+        }
+
+        function finalizarCompra() {
+            carrinho.finalizarCompra();
+        }
+
+        // Inicializar carrinho quando a página carregar
+        let carrinho;
+        document.addEventListener('DOMContentLoaded', () => {
+            carrinho = new CarrinhoCompras();
+        });
+
+        // API pública para integração com outros sites
+        window.CarrinhoAPI = {
+            // Adicionar item ao carrinho
+            adicionarItem: function(item) {
+                if (!carrinho) return false;
+                
+                const itemExistente = carrinho.items.find(i => i.id === item.id);
+                if (itemExistente) {
+                    itemExistente.quantidade += item.quantidade || 1;
+                } else {
+                    carrinho.items.push({
+                        id: item.id,
+                        nome: item.nome,
+                        categoria: item.categoria || 'Produto',
+                        preco: parseFloat(item.preco),
+                        quantidade: item.quantidade || 1,
+                        imagem: item.imagem || 'https://via.placeholder.com/100x100'
+                    });
+                }
+                
+                carrinho.renderizarCarrinho();
+                carrinho.atualizarResumo();
+                carrinho.salvarCarrinho();
+                return true;
+            },
+            
+            // Obter items do carrinho
+            obterItems: function() {
+                return carrinho ? carrinho.items : [];
+            },
+            
+            // Obter total do carrinho
+            obterTotal: function() {
+                if (!carrinho) return 0;
+                return carrinho.calcularSubtotal() + carrinho.frete;
+            },
+            
+            // Limpar carrinho
+            limparCarrinho: function() {
+                if (!carrinho) return false;
+                carrinho.items = [];
+                carrinho.renderizarCarrinho();
+                carrinho.atualizarResumo();
+                carrinho.salvarCarrinho();
+                return true;
+            }
+        };
+    </script>
+</body>
+</html>
